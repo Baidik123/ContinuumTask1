@@ -1,0 +1,28 @@
+v-navigation-drawer(
+  app
+  permanent
+  color="primary"
+  width="260"
+  class="sidebar"
+)
+  .sidebar-header
+    p.test-name Test_002 
+
+  v-divider 
+
+  v-list(density="comfortable")
+    v-list-group(
+      v-for="section in sections"
+      :key="section.title"
+    )
+      v-divider
+      template(#activator="{ props }")
+        v-list-item(v-bind="props")
+          v-list-item-title {{ section.title }}
+      
+      v-list-item(
+        v-for="child in section.children"
+        :key="child"
+        class="child-item"
+      )
+        v-list-item-title {{ child }}

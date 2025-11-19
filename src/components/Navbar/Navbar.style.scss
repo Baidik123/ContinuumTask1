@@ -1,0 +1,11 @@
+.nav-btn{
+    color: secondary;
+    font-weight: 500;
+    flex: 1;
+    border-radius: 0;
+    min-width: 0;
+    transition: color 0.3s ease;
+}
+.v-app-bar{
+    border-bottom: 1px solid primary;
+}

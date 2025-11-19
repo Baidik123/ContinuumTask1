@@ -1,0 +1,16 @@
+v-app-bar(app color="primary" elevation="2")
+  //v-toolbar-title.text-h4.ml-4.text-secondary Continuum
+  img(src='@/assets/logo.png' alt="Continuum")
+  v-spacer
+  v-btn(icon @click="toggleTheme")
+      v-icon mdi-theme-light-dark
+  v-btn(icon color="green")
+      v-icon mdi-cloud-check 
+  v-toolbar-text.text-h14.mr-4.text-secondary Test_002
+  v-btn(icon)
+      v-icon mdi-account-settings 
+  v-btn(icon)
+      v-icon mdi-shield   
+  v-btn(icon)
+      v-icon mdi-logout   
+      

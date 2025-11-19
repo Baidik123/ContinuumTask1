@@ -1,0 +1,13 @@
+//- v-toolbar(color="white" flat)
+//-   v-container.d-flex.align-center
+//-    v-btn(v-for="link in links" :key="link.name" :to="link.path" router class="nav-btn ")
+//-      | {{ link.name }}
+
+v-app-bar(color="primary" elevation="2")
+  v-container.d-flex.align-center
+    v-btn(
+      v-for="link in links" 
+      :key="link.name" 
+      :to="link.path" router class="nav-btn "
+      style="flex: 1; border-radius: 0;")
+      | {{ link.name }}
