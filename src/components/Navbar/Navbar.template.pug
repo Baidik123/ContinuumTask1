@@ -11,3 +11,48 @@ v-app-bar(color="primary" elevation="1")
       :to="link.path" router class="nav-btn "
       style="flex: 1; border-radius: 0;")
       | {{ link.name }}
+
+    v-menu(
+      v-model="userMenu"
+      location="bottom"
+      transition="fade-transition"
+      :close-on-content-click="false"
+    )
+      template(#activator="{ props }")
+        v-btn(
+          v-bind="props"
+          color="secondary"
+          variant="text"
+          append-icon="mdi-chevron-down"
+          class="ml-4"
+          :close-on-click="false"
+
+        )
+          v-icon.mr-1 mdi-account-circle
+        
+    
+      v-card(min-width="300")
+        v-card-title User Settings
+    
+        v-card-text
+          v-text-field(
+            label="Username"
+            v-model="user.name"
+            variant="outlined"
+            density="compact"
+            hide-details
+            append-inner-icon="mdi-account"
+          )
+    
+          v-text-field.mt-3(
+            label="Email"
+            v-model="user.email"
+            variant="outlined"
+            density="compact"
+            hide-details
+            append-inner-icon="mdi-email"
+          )
+          v-card-actions(style="justify-content: center;")
+            v-btn(icon @click="ToggleTheme" )
+              v-icon mdi-theme-light-dark
+      

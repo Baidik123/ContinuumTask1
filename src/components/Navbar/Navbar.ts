@@ -1,4 +1,8 @@
-import { defineComponent,ref } from "vue";
+import { defineComponent,ref} from "vue";
+import{reactive} from "vue";
+
+import { useTheme } from "vuetify";
+
 export default defineComponent({
     name: "Nav-bar",
     setup(){
@@ -11,6 +15,23 @@ export default defineComponent({
             {name:'Core Data',path:'/coredata'},
             {name:'Export',path:'/export'},
         ]);
-        return {links};
-    }
+        const userMenu=ref(false);
+        const user=reactive({
+            name:'BAIDIK',
+            email:"user@gmail.com",
+        });
+        const theme = useTheme();
+        const ToggleTheme=()=> {
+        const current = theme.global.name.value; 
+        theme.global.name.value = current === 'lightTheme' ? 'darkTheme' : 'lightTheme'; 
+        };
+
+        return {
+            links,
+            userMenu,
+            user,
+            ToggleTheme,
+            
+        };
+    },
 });
