@@ -7,8 +7,50 @@ v-app-bar(app color="primary" elevation="1")
   v-btn(icon color="green")
       v-icon mdi-cloud-check 
   v-toolbar-text.text-h14.mr-4.text-secondary Test_002
-  v-btn(icon)
-      v-icon mdi-account-settings 
+  v-menu(
+      v-model="userMenu"
+      location="bottom"
+      transition="fade-transition"
+      :close-on-content-click="false"
+    )
+      template(#activator="{ props }")
+        v-btn(
+          v-bind="props"
+          color="secondary"
+          variant="text"
+          class="ml-4"
+          :close-on-click="false"
+
+        )
+          v-icon.mr-1 mdi-account-settings
+        
+    
+      v-card(min-width="300" variant="outlined")
+        v-card-title User Settings
+    
+        v-card-text
+          v-text-field(
+            label="Username"
+            v-model="user.name"
+            variant="outlined"
+            density="compact"
+            hide-details
+            append-inner-icon="mdi-account"
+          )
+    
+          v-text-field.mt-3(
+            label="Email"
+            v-model="user.email"
+            variant="outlined"
+            density="compact"
+            hide-details
+            append-inner-icon="mdi-email"
+          )
+          v-card-actions(style="justify-content: center;")
+            v-btn(icon @click="toggleTheme" variant ="tonal")
+              v-icon mdi-theme-light-dark
+      
+     
   v-btn(icon)
       v-icon mdi-shield   
   v-btn(icon)

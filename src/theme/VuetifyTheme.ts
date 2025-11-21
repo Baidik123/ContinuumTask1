@@ -12,6 +12,8 @@ export default createVuetify({
     aliases,
     sets: { mdi },
   },
+  //apply font globally
+  
   theme: {
     defaultTheme: 'lightTheme',
     themes: {
