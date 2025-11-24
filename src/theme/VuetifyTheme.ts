@@ -4,6 +4,13 @@ import { aliases,mdi } from "vuetify/iconsets/mdi";
 import 'vuetify/styles';
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
+
+import '@fontsource/poppins/300.css' 
+import '@fontsource/poppins/400.css' 
+import '@fontsource/poppins/500.css'
+import '@fontsource/poppins/600.css' 
+import '@fontsource/poppins/700.css' 
+
 export default createVuetify({
   components,
   directives,
@@ -13,7 +20,7 @@ export default createVuetify({
     sets: { mdi },
   },
   //apply font globally
-  
+
   theme: {
     defaultTheme: 'lightTheme',
     themes: {
@@ -35,4 +42,13 @@ export default createVuetify({
       },
     },
   },
+  // typography: {
+  //   defaultFontFamily: 'Poppins,sans-serif',
+  // },
+  defaults: {
+    global:{
+      fontFamily: 'Poppins, sans-serif',
+    }
+  },  
+  
 });

@@ -1,0 +1,24 @@
+v-navigation-drawer(
+  location="right"
+  width="300"
+  v-model="isOpen"
+  temporary
+  class="right-panel"
+)
+  .panel-header
+    span.panel-title Right Panel
+    
+  v-divider
+  .panel-content
+    v-list(density="default")
+      v-list-item
+        v-list-item-title Option 1
+      v-divider
+      v-list-item
+        v-list-item-title Option 2
+      v-divider
+      v-list-item
+        v-list-item-title Option 3
+      v-divider  
+         
+        

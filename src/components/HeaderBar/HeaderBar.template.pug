@@ -4,8 +4,9 @@ v-app-bar(app color="primary" elevation="1")
   v-spacer
   v-btn(icon @click="toggleTheme")
       v-icon mdi-theme-light-dark
-  v-btn(icon color="green")
-      v-icon mdi-cloud-check 
+
+  v-btn(icon color="green" @click='cloudDialog = true')
+      v-icon mdi-cloud-check  
   v-toolbar-text.text-h14.mr-4.text-secondary Test_002
   v-menu(
       v-model="userMenu"
@@ -41,18 +42,27 @@ v-app-bar(app color="primary" elevation="1")
           v-text-field.mt-3(
             label="Email"
             v-model="user.email"
-            variant="outlined"
+            variant="plain"
             density="compact"
             hide-details
             append-inner-icon="mdi-email"
+            readonly
           )
           v-card-actions(style="justify-content: center;")
             v-btn(icon @click="toggleTheme" variant ="tonal")
               v-icon mdi-theme-light-dark
       
-     
-  v-btn(icon)
+  v-btn(icon @click="shield")
       v-icon mdi-shield   
   v-btn(icon)
-      v-icon mdi-logout   
+      v-icon mdi-logout 
+  v-btn(icon @click="openRightPanel")
+      v-icon mdi-format-list-bulleted        
       
+v-dialog(v-model='cloudDialog' max-width='300')
+  v-card(title='Cloud Status')
+    v-card-text
+      | Green Cloud Status
+    
+     
+  

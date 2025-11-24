@@ -1,7 +1,7 @@
 v-app 
-  HeaderBar
+  HeaderBar(@open-right-panel="handleOpenRightPanel")
   SideBar
   Navbar
-  
+  RightPanel(ref="rightPanelRef")
   v-main 
     router-view
