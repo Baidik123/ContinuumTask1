@@ -1,18 +1,16 @@
-<template lang="pug">   
-    .setup-container
-        h1 Set up
+<template lang="pug">
+.setup-view
+  ThreeDViewer
 </template>
-
-<style lang="scss" scoped>
-.setup-container {
+<script setup lang="ts">
+import ThreeDViewer from "@/components/ThreeDViewer/ThreeDviewer.vue";
+</script>
+<style scoped>
+.setup-view {
+  width: 100%;
+  height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 64px);
-}
-
-h1 {
-  font-size: 2rem;
-  color: secondary;
+  align-items: center;
 }
 </style>
