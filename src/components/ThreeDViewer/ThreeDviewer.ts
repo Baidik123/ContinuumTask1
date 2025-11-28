@@ -1,17 +1,34 @@
-import {defineComponent,onMounted,onBeforeUnmount} from "vue";
+import {defineComponent,onMounted,onBeforeUnmount,watch, nextTick} from "vue";
 import * as BABYLON from "babylonjs";
+import { ArcRotateCamera } from "babylonjs";
+import { en } from "vuetify/locale";
 
 export default defineComponent({
     name:"ThreeD-Viewer",
-    setup(){
+    props:{
+        panelOpen:{
+            type:Boolean,
+            default:false,
+        }
+    },
+    setup(props){
         let engine: BABYLON.Engine | null = null;
         let scene: BABYLON.Scene | null = null;
+        let camera: BABYLON.ArcRotateCamera | null = null;
         onMounted(() => {
             const canvas = document.getElementById("viewerCanvas") as HTMLCanvasElement;
             engine = new BABYLON.Engine(canvas, true);
             scene = new BABYLON.Scene(engine);
-            const camera =new BABYLON.FreeCamera("camera1",new BABYLON.Vector3(0,5,-10),scene);
-            camera.setTarget(BABYLON.Vector3.Zero());
+            //camera =new BABYLON.FreeCamera("camera1",new BABYLON.Vector3(0,5,-10),scene);
+            
+            camera = new BABYLON.ArcRotateCamera(
+            "camera",
+            Math.PI / 2,     
+            Math.PI / 3,     
+            10,              
+            BABYLON.Vector3.Zero(), 
+            scene
+            );
             camera.attachControl(canvas,true);
             const light = new BABYLON.HemisphericLight("light1",new BABYLON.Vector3(0,1,0),scene);
             light.intensity = 0.7;
@@ -29,6 +46,17 @@ export default defineComponent({
                 }
             });
         });
+        watch(
+            () => props.panelOpen,
+            
+            ()=>{
+                if(!engine)return;
+                nextTick(()=>{
+                    engine.resize();
+                });
+                
+            }
+        );
 
         onBeforeUnmount(() => {
             if(engine){

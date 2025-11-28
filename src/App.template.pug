@@ -2,6 +2,6 @@ v-app
   HeaderBar(@open-right-panel="handleOpenRightPanel")
   SideBar
   Navbar
-  RightPanel(ref="rightPanelRef")
+  RightPanel(ref="rightPanelRef" @panelToggled="panelOpen=$event")
   v-main 
-    router-view
+    router-view(:panelOpen="panelOpen")

@@ -8,14 +8,16 @@ export default defineComponent({
   components: {HeaderBar,Navbar,SideBar,RightPanel},
   setup() {
     const rightPanelRef=ref(null);
+    const panelOpen=ref(false);
     const handleOpenRightPanel=()=>{
       if(rightPanelRef.value){
         rightPanelRef.value.openPanel();
       }
     };
-    return {
-      rightPanelRef,
+    return { 
+       rightPanelRef,
       handleOpenRightPanel,
+      panelOpen,
     };
-  } 
+  }
 });
