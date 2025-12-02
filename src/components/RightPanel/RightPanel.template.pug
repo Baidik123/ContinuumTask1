@@ -1,29 +1,45 @@
 v-navigation-drawer(
   location="right"
-  width="300"
+  width="900"
   v-model="isOpen"
   temporary
   class="right-panel"
 )
-  .panel-header
-    span.panel-title Right Panel
+  .dialog-container(style="padding: 16px;position:relative;")
+    .panel-header
+      span.panel-title Right Panel
+      
+    v-divider
+    .panel-content
+      v-list(density="default")
+        v-list-item
+          v-list-item-title Option 1
+        v-divider
+        v-list-item
+          v-list-item-title Option 2
+        v-divider
+        v-list-item
+          v-list-item-title Option 3
+        v-divider 
     
-  v-divider
-  .panel-content
-    v-list(density="default")
-      v-list-item
-        v-list-item-title Option 1
-      v-divider
-      v-list-item
-        v-list-item-title Option 2
-      v-divider
-      v-list-item
-        v-list-item-title Option 3
-      v-divider 
-  
-  .drawer-footer.pa-3.position-absolute.bottom-0.left-0.right-0
-    v-btn(block color="primary" @click="closePanel")
-      v-icon.mr-2 mdi-close
-
-    
-        
+        v-btn(
+          color="primary"
+          block 
+          @click="dialog=true"
+        ) Open Dialog
+      v-dialog(v-model="dialog" max-width="900" persistent attach=".dialog-container")
+        v-card(style="display:flex; flex-direction: column; height: 80vh;")
+          v-card-title Dialog Title
+          v-card-text(style="flex:1; overflow-y:auto;") This is a dialog inside the right panel.
+            v-data-table(
+              :headers="headers"
+              :items="items"
+              class="elevated-Table"
+            )
+        v-btn(
+            v-if="dialog"
+            color="secondary"         
+            style="margin-top:30px;"
+            @click="dialog=false"
+        ) close
+          

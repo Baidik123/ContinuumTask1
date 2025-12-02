@@ -30,7 +30,7 @@ const props = defineProps({
 }
 
 .right-panel {
-  width: 300px;
+  width: 900PX;
   height: 100%;
 }
 </style>

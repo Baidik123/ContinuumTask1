@@ -42,9 +42,7 @@ export default createVuetify({
       },
     },
   },
-  // typography: {
-  //   defaultFontFamily: 'Poppins,sans-serif',
-  // },
+  
   defaults: {
     global:{
       fontFamily: 'Poppins, sans-serif',
